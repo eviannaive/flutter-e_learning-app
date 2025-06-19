@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:e_learning/models/onboarding_item.dart';
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/views/onboarding/widgets/onboarding_page_widget.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:e_learning/routes/app_routes.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:e_learning/core/theme/app_colors.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
