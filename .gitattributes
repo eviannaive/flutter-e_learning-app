@@ -1,0 +1,9 @@
+# Ignore generated or non-source folders
+android/** linguist-vendored
+ios/** linguist-vendored
+build/** linguist-vendored
+.flutter-plugins/** linguist-vendored
+.flutter-plugins-dependencies/** linguist-vendored
+.dart_tool/** linguist-vendored
+.idea/** linguist-vendored
+web/** linguist-vendored
