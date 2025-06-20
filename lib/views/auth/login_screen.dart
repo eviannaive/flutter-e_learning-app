@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+
 import 'package:get/get_core/get_core.dart';
 import 'package:e_learning/views/widgets/common/custom_button.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:e_learning/routes/app_routes.dart';
+import 'package:e_learning/core/utils/validators.dart';
+import 'package:e_learning/views/widgets/common/custom_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,8 +21,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
+    _emailController.dispose();
     _passwordController.dispose();
-    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -80,52 +82,47 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   const SizedBox(height: 20),
-                  Form(child: Column(
-                    children: [
-                      CustomTextField(
-                        labelText: 'Email',
-                        prefixIcon: Icons.email_outlined,
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: FormValidator.validateEmail,
-                      ),
-                      const SizedBox(height: 20),
-                      CustomTextField(
-                        labelText: 'Password',
-                        prefixIcon: Icons.lock_outline,
-                        controller: _passwordController,
-                        obscureText: true,
-                        validator: FormValidator.validatePassword,
-                      ),
-                      const SizedBox(height: 20),
-                      const SizedBox(height: 10),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () => Get.toNamed(AppRoutes.forgotPassword),
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(color: Theme.of(context).primaryColor),
+                  Form(
+                    child: Column(
+                      children: [
+                        CustomTextfield(
+                          label: 'Email',
+                          prefixIcon: Icons.email_outlined,
+                          controller: _emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          validator: FormValidator.validateEmail,
+                        ),
+                        const SizedBox(height: 20),
+                        CustomTextfield(
+                          label: 'Password',
+                          prefixIcon: Icons.lock_outline,
+                          controller: _passwordController,
+                          obscureText: true,
+                          validator: FormValidator.validatePassword,
+                        ),
+                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                            onPressed: () =>
+                                Get.toNamed(AppRoutes.forgotPassword),
+                            child: Text(
+                              'Forgot Password?',
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
+                        const SizedBox(height: 10),
 
-                      CustomButton(
-                        text: 'Login',
-                        onPressed: _handleLogin,
-                      ),
+                        CustomButton(text: 'Login', onPressed: _handleLogin),
 
-                      const SizedBox(height: 20),
-
-
-
-                    ]
-                  ))
-
-
-
-
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
 
                   Row(
                     children: [

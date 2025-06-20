@@ -6,7 +6,6 @@ import 'package:e_learning/views/widgets/common/custom_textfield.dart';
 import 'package:e_learning/routes/app_routes.dart';
 import 'package:e_learning/views/widgets/common/custom_button.dart';
 
-
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -169,17 +168,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     children: [
                       const Text('Already have an account?'),
                       TextButton(
-                        onPressed: () {
-                        },
-                        child: Text('Login',
+                        onPressed: () {},
+                        child: Text(
+                          'Login',
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold
-                          )
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ]
-                  )
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -189,16 +188,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  void _handleRegister(){
-    if(_formkey.currentState!.validate() && _selectedRole != null){
-      if(_selectedRole == UserRole.teacher){
-        Get.offAllNamed(AppRoutes.teacherHome)
+  void _handleRegister() {
+    if (_formkey.currentState!.validate() && _selectedRole != null) {
+      if (_selectedRole == UserRole.teacher) {
+        Get.offAllNamed(AppRoutes.teacherHome);
       } else {
         Get.offAllNamed(AppRoutes.home);
       }
-    }else if(_selectedRole == null){
+    } else if (_selectedRole == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select a role'),backgroundColor: Colors.red),
+        const SnackBar(
+          content: Text('Please select a role'),
+          backgroundColor: Colors.red,
+        ),
       );
     }
   }

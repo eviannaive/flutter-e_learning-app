@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class CustomTextfield extends StatefulWidget {
   final String label;
@@ -61,7 +60,11 @@ class _CustomTextfieldState extends State<CustomTextfield> {
         prefixIcon: widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
         suffixIcon: widget.obscureText
             ? IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
                 icon: Icon(
                   _obscureText
                       ? Icons.visibility_outlined

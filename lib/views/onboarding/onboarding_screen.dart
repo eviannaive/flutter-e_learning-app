@@ -5,6 +5,7 @@ import 'package:e_learning/views/onboarding/widgets/onboarding_page_widget.dart'
 import 'package:get/get.dart';
 import 'package:e_learning/routes/app_routes.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:e_learning/services/storage_service.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -36,8 +37,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ),
   ];
 
-  void _completeOnboarding() async{
-    await StorageService().setFirstTime(false);
+  void _completeOnboarding() async {
+    await StorageService.setFirstTime(false);
     Get.offAllNamed(AppRoutes.login);
   }
 
