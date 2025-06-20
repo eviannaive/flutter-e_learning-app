@@ -5,6 +5,7 @@ import 'package:e_learning/views/auth/login_screen.dart';
 import 'package:e_learning/views/auth/forgot_password_screen.dart';
 import 'package:e_learning/views/auth/register_screen.dart';
 import 'package:e_learning/views/home/home_screen.dart';
+import 'package:e_learning/views/teacher/teacher_home_screen.dart';
 
 class AppRoutes {
   // auth routes
@@ -14,6 +15,7 @@ class AppRoutes {
   static const String forgotPassword = '/forgot-password';
   static const String login = '/login';
   static const String home = '/home';
+  static const String teacherHome = '/teacher/home';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -29,6 +31,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
       case home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case teacherHome:
+        return MaterialPageRoute(builder: (_) => const TeacherHomeScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>

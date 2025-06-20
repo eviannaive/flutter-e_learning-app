@@ -6,6 +6,7 @@ import 'package:e_learning/views/auth/login_screen.dart';
 import 'package:e_learning/views/auth/forgot_password_screen.dart';
 import 'package:e_learning/views/auth/register_screen.dart';
 import 'package:e_learning/views/home/home_screen.dart';
+import 'package:e_learning/views/teacher/teacher_home_screen.dart';
 
 class AppPages {
   static final List<GetPage> pages = [
@@ -18,5 +19,6 @@ class AppPages {
       page: () => const ForgotPasswordScreen(),
     ),
     GetPage(name: AppRoutes.home, page: () => const HomeScreen()),
+    GetPage(name: AppRoutes.teacherHome, page: () => const TeacherHomeScreen()),
   ];
 }

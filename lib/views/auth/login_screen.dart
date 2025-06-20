@@ -5,8 +5,30 @@ import 'package:e_learning/views/widgets/common/custom_button.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:e_learning/routes/app_routes.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _formkey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  void _handleLogin() {
+    if (_formkey.currentState!.validate()) {
+      Get.offAllNamed(AppRoutes.home);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,55 +80,52 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 20),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      prefixIcon: const Icon(Icons.email_outlined),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  Form(child: Column(
+                    children: [
+                      CustomTextField(
+                        labelText: 'Email',
+                        prefixIcon: Icons.email_outlined,
+                        controller: _emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: FormValidator.validateEmail,
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey.shade300),
+                      const SizedBox(height: 20),
+                      CustomTextField(
+                        labelText: 'Password',
+                        prefixIcon: Icons.lock_outline,
+                        controller: _passwordController,
+                        obscureText: true,
+                        validator: FormValidator.validatePassword,
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: const Icon(Icons.lock_outline),
-                      suffixIcon: const Icon(Icons.visibility_outlined),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                      const SizedBox(height: 20),
+                      const SizedBox(height: 10),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: () => Get.toNamed(AppRoutes.forgotPassword),
+                          child: Text(
+                            'Forgot Password?',
+                            style: TextStyle(color: Theme.of(context).primaryColor),
+                          ),
+                        ),
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Colors.grey.shade300),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
+                      const SizedBox(height: 10),
 
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () => Get.toNamed(AppRoutes.forgotPassword),
-                      child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Theme.of(context).primaryColor),
+                      CustomButton(
+                        text: 'Login',
+                        onPressed: _handleLogin,
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
 
-                  CustomButton(
-                    text: 'Login',
-                    onPressed: () => Get.offAllNamed(AppRoutes.home),
-                  ),
+                      const SizedBox(height: 20),
 
-                  const SizedBox(height: 20),
+
+
+                    ]
+                  ))
+
+
+
+
 
                   Row(
                     children: [

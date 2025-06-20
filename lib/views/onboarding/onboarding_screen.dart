@@ -36,6 +36,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ),
   ];
 
+  void _completeOnboarding() async{
+    await StorageService().setFirstTime(false);
+    Get.offAllNamed(AppRoutes.login);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,11 +60,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             },
           ),
 
+          // skip button
           Positioned(
             top: 50,
             right: 20,
             child: TextButton(
-              onPressed: () => Get.offAllNamed(AppRoutes.login),
+              onPressed: _completeOnboarding,
               child: const Text(
                 'Skip',
                 style: TextStyle(
@@ -89,10 +95,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
 
+                // next/get started button
                 ElevatedButton(
                   onPressed: () {
                     if (_currentPage == _pages.length - 1) {
-                      Get.offAllNamed(AppRoutes.login);
+                      _completeOnboarding();
                     } else {
                       _pageController.nextPage(
                         duration: Duration(microseconds: 300),

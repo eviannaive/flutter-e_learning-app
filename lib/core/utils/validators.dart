@@ -15,7 +15,7 @@ class FormValidator {
       return 'Password is required';
     }
     if (value.length < 6) {
-      return 'Password must be at least 8 characters long';
+      return 'Password must be at least 6 characters long';
     }
     return null;
   }
@@ -25,7 +25,7 @@ class FormValidator {
       return 'Full Name is required';
     }
     if (value.length < 3) {
-      return 'Name must be at least 2 characters long';
+      return 'Name must be at least 3 characters long';
     }
     return null;
   }
