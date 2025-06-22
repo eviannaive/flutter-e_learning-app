@@ -5,6 +5,19 @@ class Course {
   final String title;
   final String description;
   final String imageUrl;
+  final String instructorId;
+  final String categoryId;
+  final String price;
+  final List<Lesson> lessons;
+  final double rating;
+  final int reviewCount;
+  final int enrollmentCount;
+  final String level;
+  final List<String> requirements;
+  final List<String> whatYouwillLearn;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final bool isPremium;
 
   Course({
     required this.id,
