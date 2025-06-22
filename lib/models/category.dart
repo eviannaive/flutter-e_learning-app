@@ -1,5 +1,3 @@
-import 'package:flutter_svg/flutter_svg.dart';
-
 class Category {
   final String id;
   final String name;
