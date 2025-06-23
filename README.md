@@ -27,12 +27,12 @@ flutter devices
 
 ### 預先啟動模擬器
 
-#### Android 
+#### Android
 ```bash
 flutter emulators --launch <Medium_Phone_API_36.0模擬器名稱>
 ```
 
-#### iOS 
+#### iOS
 ```bash
 flutter emulators --launch <apple_ios_simulator模擬器名稱>
 ```
@@ -46,4 +46,16 @@ flutter run -d <ios device_id>
 flutter run -d <android device_id>
 ```
 
+### 重新啟動
 
+#### iOS
+```bash
+killall Simulator
+open -a Simulator
+```
+
+### 重新啟動App
+```bash
+flutter clean
+flutter run
+```
