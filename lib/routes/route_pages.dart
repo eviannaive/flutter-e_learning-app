@@ -31,7 +31,7 @@ class AppPages {
             : null,
       ),
     ),
-    GetPage(name: AppRoutes.home, page: () => const HomeScreen()),
+    GetPage(name: AppRoutes.home, page: () => HomeScreen()),
     GetPage(name: AppRoutes.courseList, page: () => const CourseListScreen()),
     GetPage(name: AppRoutes.quizList, page: () => const QuizListScreen()),
     GetPage(name: AppRoutes.profile, page: () => const ProfileScreen()),

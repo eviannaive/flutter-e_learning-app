@@ -26,16 +26,16 @@ class MainScreen extends StatelessWidget {
             backgroundColor: AppColors.lightBackground,
             body: IndexedStack(
               index: state.currentIndex,
-              children: const [
+              children: [
                 HomeScreen(),
-                CourseListScreen(),
-                QuizListScreen(),
-                ProfileScreen(),
+                const CourseListScreen(),
+                const QuizListScreen(),
+                const ProfileScreen(),
               ],
             ),
             bottomNavigationBar: NavigationBar(
-              backgroundColor: AppColors.accent,
-              indicatorColor: AppColors.primary.withOpacity(0.1),
+              backgroundColor: AppColors.primaryLight,
+              indicatorColor: AppColors.primary.withOpacity(0.8),
               destinations: [
                 NavigationDestination(
                   icon: Icon(Icons.home_outlined),

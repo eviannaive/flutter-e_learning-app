@@ -12,7 +12,7 @@ class AppColors {
   static const Color secondaryDark = Color(0xFF53351B); // 深棕色
 
   // Accent & status colors
-  static const Color accent = Color(0xFFDAA520); // 金黃色強調
+  static const Color accent = Color(0xFFFFFFFF); // 白色強調
   static const Color success = Color(0xFF4CAF50); // 成功：綠色（保留綠色）
   static const Color warning = Color(0xFFFFB74D); // 警告：淺橘色
   static const Color error = Color(0xFFE53935); // 錯誤：紅色（保留紅色）

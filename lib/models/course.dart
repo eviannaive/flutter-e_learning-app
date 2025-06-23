@@ -7,7 +7,7 @@ class Course {
   final String imageUrl;
   final String instructorId;
   final String categoryId;
-  final String price;
+  final num price;
   final List<Lesson> lessons;
   final double rating;
   final int reviewCount;
