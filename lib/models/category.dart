@@ -1,7 +1,9 @@
+import 'package:flutter/widgets.dart';
+
 class Category {
   final String id;
   final String name;
-  final Object icon;
+  final IconData icon;
   final int courseCount;
 
   Category({
