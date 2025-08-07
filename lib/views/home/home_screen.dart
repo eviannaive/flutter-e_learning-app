@@ -1,6 +1,9 @@
 import 'package:e_learning/services/dummy_data_service.dart';
 import 'package:e_learning/views/home/widgets/category_section.dart';
 import 'package:e_learning/views/home/widgets/home_app_bar.dart';
+import 'package:e_learning/views/home/widgets/in_progress_section.dart';
+import 'package:e_learning/views/home/widgets/recommended_course_card.dart';
+import 'package:e_learning/views/home/widgets/recommended_section.dart';
 import 'package:e_learning/views/home/widgets/search_bar_widget.dart';
 import 'package:e_learning/models/category.dart';
 import 'package:flutter/material.dart';
@@ -52,8 +55,11 @@ class HomeScreen extends StatelessWidget {
           sliver: SliverList(
             delegate: SliverChildListDelegate([
               const SearchBarWidget(),
-              const SizedBox(height: 20),
+              const SizedBox(height: 32),
               CategorySection(categories: categories),
+              const SizedBox(height: 32),
+              InProgressSection(),
+              RecommendedSection(),
             ]),
           ),
         ),

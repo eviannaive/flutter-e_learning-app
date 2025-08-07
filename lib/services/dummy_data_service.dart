@@ -36,6 +36,7 @@ class DummyDataService {
       rating: 4.8,
       reviewCount: 245,
       enrollmentCount: 1200,
+      isPremium: true,
     ),
     Course(
       id: '2',
@@ -46,7 +47,7 @@ class DummyDataService {
       instructorId: 'inst_2',
       categoryId: '2',
       price: 99.99,
-      lessons: _createDesignLessons(),
+      lessons: _createDataScienceLessons(),
       level: 'Beginner',
       requirements: [
         'Basic knowledge of programming concepts',
@@ -96,6 +97,7 @@ class DummyDataService {
       rating: 4.8,
       reviewCount: 245,
       enrollmentCount: 1200,
+      isPremium: true,
     ),
     Course(
       id: '4',
@@ -233,7 +235,7 @@ class DummyDataService {
         isLocked: false,
       ),
       _createLesson('2', 'Dart Programming', false, false),
-      _createLesson('3', 'Flutter Widgets', false, false),
+      _createLesson('3', 'Flutter Widgets', true, false),
       _createLesson('4', 'State Management', false, false),
       _createLesson('5', 'Navigation', false, false),
       _createLesson('6', 'Performance Optimization', false, false),
@@ -253,9 +255,9 @@ class DummyDataService {
         isPreview: true,
         isLocked: false,
       ),
-      _createLesson('2', 'Data Wrangling', false, false),
+      _createLesson('2', 'Data Wrangling', true, false),
       _createLesson('3', 'Exploratory Data Analysis', false, false),
-      _createLesson('4', 'Machine Learning Basics', false, false),
+      _createLesson('4', 'Machine Learning Basics', true, false),
       _createLesson('5', 'Data Visualization', false, false),
       _createLesson('6', 'Advanced Data Science Techniques', false, false),
     ];
@@ -263,10 +265,10 @@ class DummyDataService {
 
   static List<Lesson> _createDesignLessons() {
     return [
-      _createLesson('2', 'UI/UX Design Principles', false, false),
+      _createLesson('2', 'UI/UX Design Principles', true, true),
       _createLesson('3', 'Design Patterns', false, false),
       _createLesson('4', 'Responsive Design', false, false),
-      _createLesson('5', 'Design Tools', false, false),
+      _createLesson('5', 'Design Tools', true, true),
       _createLesson('6', 'Design Thinking', false, false),
     ];
   }
