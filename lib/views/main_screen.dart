@@ -33,35 +33,57 @@ class MainScreen extends StatelessWidget {
                 const ProfileScreen(),
               ],
             ),
-            bottomNavigationBar: NavigationBar(
-              backgroundColor: AppColors.primaryLight,
-              indicatorColor: AppColors.primary.withOpacity(0.8),
-              destinations: [
-                NavigationDestination(
-                  icon: Icon(Icons.home_outlined),
-                  selectedIcon: Icon(Icons.home),
-                  label: 'Home',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.play_lesson_outlined),
-                  selectedIcon: Icon(Icons.play_lesson),
-                  label: 'My Courses',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.quiz_outlined),
-                  selectedIcon: Icon(Icons.quiz),
-                  label: 'Quizzes',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.person_outline),
-                  selectedIcon: Icon(Icons.person),
-                  label: 'Profile',
-                ),
-              ],
-              selectedIndex: state.currentIndex,
-              onDestinationSelected: (index) {
-                context.read<NavigationBloc>().add(NavigateToTab(index));
-              },
+            bottomNavigationBar: NavigationBarTheme(
+              data: NavigationBarThemeData(
+                backgroundColor: AppColors.primaryLight,
+                indicatorColor: AppColors.primary.withOpacity(0.8),
+                labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>((
+                  states,
+                ) {
+                  if (states.contains(MaterialState.selected)) {
+                    return const TextStyle(color: Colors.white); // 選中時白色
+                  }
+                  return const TextStyle(color: Colors.black); // 未選時黑色
+                }),
+                iconTheme: MaterialStateProperty.resolveWith<IconThemeData>((
+                  states,
+                ) {
+                  if (states.contains(MaterialState.selected)) {
+                    return const IconThemeData(
+                      color: Colors.white,
+                    ); // 選中 icon 白色
+                  }
+                  return const IconThemeData(color: Colors.black); // 未選時黑色
+                }),
+              ),
+              child: NavigationBar(
+                destinations: const [
+                  NavigationDestination(
+                    icon: Icon(Icons.home_outlined),
+                    selectedIcon: Icon(Icons.home),
+                    label: 'Home',
+                  ),
+                  NavigationDestination(
+                    icon: Icon(Icons.play_lesson_outlined),
+                    selectedIcon: Icon(Icons.play_lesson),
+                    label: 'My Courses',
+                  ),
+                  NavigationDestination(
+                    icon: Icon(Icons.quiz_outlined),
+                    selectedIcon: Icon(Icons.quiz),
+                    label: 'Quizzes',
+                  ),
+                  NavigationDestination(
+                    icon: Icon(Icons.person_outline),
+                    selectedIcon: Icon(Icons.person),
+                    label: 'Profile',
+                  ),
+                ],
+                selectedIndex: state.currentIndex,
+                onDestinationSelected: (index) {
+                  context.read<NavigationBloc>().add(NavigateToTab(index));
+                },
+              ),
             ),
           );
         },
