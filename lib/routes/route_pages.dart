@@ -1,3 +1,4 @@
+import 'package:e_learning/views/course/course_detail/course_detail_screen.dart';
 import 'package:e_learning/views/course/course_list/course_list_screen.dart';
 import 'package:e_learning/views/main_screen.dart';
 import 'package:e_learning/views/profile/profile_screen.dart';
@@ -11,7 +12,6 @@ import 'package:e_learning/views/auth/forgot_password_screen.dart';
 import 'package:e_learning/views/auth/register_screen.dart';
 import 'package:e_learning/views/home/home_screen.dart';
 import 'package:e_learning/views/teacher/teacher_home_screen.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class AppPages {
   static final List<GetPage> pages = [
@@ -38,6 +38,10 @@ class AppPages {
         categoryId: Get.arguments?['category'] as String?,
         categoryName: Get.arguments?['categoryName'] as String?,
       ),
+    ),
+    GetPage(
+      name: AppRoutes.courseDetail,
+      page: () => CourseDetailScreen(courseId: Get.parameters['id'] ?? ','),
     ),
     GetPage(name: AppRoutes.quizList, page: () => const QuizListScreen()),
     GetPage(name: AppRoutes.profile, page: () => const ProfileScreen()),

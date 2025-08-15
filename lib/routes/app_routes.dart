@@ -1,3 +1,4 @@
+import 'package:e_learning/views/course/course_detail/course_detail_screen.dart';
 import 'package:e_learning/views/course/course_list/course_list_screen.dart';
 import 'package:e_learning/views/main_screen.dart';
 import 'package:e_learning/views/profile/profile_screen.dart';
@@ -24,6 +25,7 @@ class AppRoutes {
 
   // course routes
   static const String courseList = '/courses';
+  static const String courseDetail = '/courses/:id';
 
   // quiz routes
   static const String quizList = '/quizzes';
@@ -66,6 +68,17 @@ class AppRoutes {
             categoryId: args?['categoryId'] as String?,
             categoryName: args?['categoryName'] as String?,
           ),
+        );
+      case courseDetail:
+        String courseId;
+        if (settings.arguments != null) {
+          courseId = settings.arguments as String;
+        } else {
+          final uri = Uri.parse(settings.name ?? '');
+          courseId = uri.pathSegments.last;
+        }
+        return MaterialPageRoute(
+          builder: (_) => CourseDetailScreen(courseId: courseId),
         );
       case quizList:
         return MaterialPageRoute(builder: (_) => const QuizListScreen());
