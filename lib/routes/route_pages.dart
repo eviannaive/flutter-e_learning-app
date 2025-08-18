@@ -40,7 +40,7 @@ class AppPages {
       ),
     ),
     GetPage(
-      name: AppRoutes.courseDetail,
+      name: '/course/:id',
       page: () => CourseDetailScreen(courseId: Get.parameters['id'] ?? ','),
     ),
     GetPage(name: AppRoutes.quizList, page: () => const QuizListScreen()),

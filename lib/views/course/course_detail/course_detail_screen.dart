@@ -1,7 +1,10 @@
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/services/dummy_data_service.dart';
+import 'package:e_learning/views/course/course_detail/widgets/action_buttons.dart';
 import 'package:e_learning/views/course/course_detail/widgets/course_detail_app_bar.dart';
 import 'package:e_learning/views/course/course_detail/widgets/course_info_card.dart';
+import 'package:e_learning/views/course/course_detail/widgets/lessons_list.dart';
+import 'package:e_learning/views/course/course_detail/widgets/reviews_section.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -70,12 +73,59 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
                   Text(course.description, style: theme.textTheme.bodyLarge),
                   const SizedBox(height: 16),
                   CourseInfoCard(course: course),
+                  const SizedBox(height: 24),
+                  Text(
+                    'Course Content',
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  LessonsList(
+                    courseId: widget.courseId,
+                    isUnlocked: isUnlocked,
+                    onLessonComplete: () => setState(() {}),
+                  ),
+                  const SizedBox(height: 24),
+                  ReviewsSection(courseId: widget.courseId),
+                  const SizedBox(height: 16),
+                  ActionButtons(course: course),
                 ],
               ),
             ),
           ),
         ],
       ),
+      bottomNavigationBar: course.isPremium && !isUnlocked
+          ? Container(
+              padding: const EdgeInsets.only(
+                left: 16,
+                top: 10,
+                right: 16,
+                bottom: 26,
+              ),
+              decoration: BoxDecoration(
+                color: theme.scaffoldBackgroundColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 10,
+                    offset: const Offset(0, -5),
+                  ),
+                ],
+              ),
+              child: ElevatedButton(
+                onPressed: () {
+                  // navigate to payment screen
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  padding: const EdgeInsets.all(16),
+                ),
+                child: Text('Buy Now for \$${course.price}'),
+              ),
+            )
+          : null,
     );
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:e_learning/core/theme/app_colors.dart';
 import 'package:e_learning/models/course.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +22,7 @@ class CourseInfoCard extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Row(
@@ -136,5 +134,18 @@ class CourseInfoCard extends StatelessWidget {
     );
   }
 
-  // Widget _buildLearningItem()
+  Widget _buildLearningItem(BuildContext context, String item) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(left: 8, bottom: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Icon(Icons.check_circle, color: AppColors.primary, size: 16),
+          const SizedBox(width: 8),
+          Expanded(child: Text(item, style: theme.textTheme.bodyMedium)),
+        ],
+      ),
+    );
+  }
 }
