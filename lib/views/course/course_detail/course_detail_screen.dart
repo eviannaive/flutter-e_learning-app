@@ -1,4 +1,5 @@
 import 'package:e_learning/core/theme/app_colors.dart';
+import 'package:e_learning/routes/app_routes.dart';
 import 'package:e_learning/services/dummy_data_service.dart';
 import 'package:e_learning/views/course/course_detail/widgets/action_buttons.dart';
 import 'package:e_learning/views/course/course_detail/widgets/course_detail_app_bar.dart';
@@ -18,6 +19,31 @@ class CourseDetailScreen extends StatefulWidget {
 }
 
 class _CourseDetailScreenState extends State<CourseDetailScreen> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose(); // 釋放資源
+    super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // 如果是付款成功回來，可根據參數觸發捲動
+    final fromPayment = Get.parameters['fromPayment'] == 'true';
+    if (fromPayment) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _scrollController.animateTo(
+          0,
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeOut,
+        );
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -29,6 +55,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
 
     return Scaffold(
       body: CustomScrollView(
+        controller: _scrollController,
         slivers: [
           CourseDetailAppBar(imageUrl: course.imageUrl),
           SliverToBoxAdapter(
@@ -117,6 +144,14 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   // navigate to payment screen
+                  Get.toNamed(
+                    AppRoutes.payment,
+                    arguments: {
+                      'courseId': course.id,
+                      'courseName': course.title,
+                      'price': course.price,
+                    },
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primary,

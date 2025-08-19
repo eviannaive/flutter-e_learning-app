@@ -457,6 +457,10 @@ class DummyDataService {
     return !course.isPremium || _purchaseCourseIds.contains(courseId);
   }
 
+  static void addPurchasedCourse(String courseId) {
+    _purchaseCourseIds.add(courseId);
+  }
+
   static final Map<String, TeacherStats> teacherStats = {
     'inst_1': TeacherStats(
       totalStudents: 1234,
